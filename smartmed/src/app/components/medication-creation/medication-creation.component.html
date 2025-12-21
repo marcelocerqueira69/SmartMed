@@ -1,0 +1,66 @@
+<ng-container class="new-medication-wrapper">
+  <div class="new-medication-header">
+    <span class="new-medication-header-content">Add medication</span>
+  </div>
+
+  <form [formGroup]="medication">
+    <div class="new-medication-form-part">
+      <label class="new-medication-form-label">Medication name:</label>
+      <input
+        type="text"
+        placeholder="e.g: Ibuprofen, Paracetamol"
+        formControlName="name"
+        class="new-medication-form-field"
+        [class.invalid]="medication.get('name')?.invalid && medication.get('name')?.touched">
+      <div class="error" *ngIf="medication.get('name')?.touched && medication.get('name')?.hasError('required')">
+        Name required
+      </div>
+    </div>
+
+    <div class="new-medication-form-part">
+      <label class="new-medication-form-label">Category:</label>
+      <p></p>
+      <mat-select
+        formControlName="category"
+        class="new-medication-category"
+        [class.invalid]="medication.get('category')?.invalid && medication.get('category')?.touched">
+        <mat-option *ngFor="let category of categories" [value]="category.code">{{category.label}}</mat-option>
+      </mat-select>
+      <div class="error" *ngIf="medication.get('category')?.touched && medication.get('category')?.hasError('required')">
+        *Category required
+      </div>
+    </div>
+
+    <div class="new-medication-form-part">
+      <label class="new-medication-form-label">Quantity (mg)</label>
+      <input
+        type="number"
+        formControlName="quantity"
+        min="0" max="1000"
+        class="new-medication-form-field"
+        [class.invalid]="medication.get('quantity')?.invalid && medication.get('quantity')?.touched">
+      <div class="error" *ngIf="medication.get('quantity')?.touched && medication.get('quantity')?.invalid">
+        *Quantity should be between 0 and 1000mg
+      </div>
+    </div>
+
+    <div class="new-medication-form-part">
+      <label class="new-medication-form-label">Times per day</label>
+      <input
+        type="number"
+        formControlName="timesPerDay"
+        min="0"
+        max="4"
+        class="new-medication-form-field"
+        [class.invalid]="medication.get('timesPerDay')?.invalid && medication.get('timesPerDay')?.touched">
+      <div class="error" *ngIf="medication.get('timesPerDay')?.touched && medication.get('timesPerDay')?.invalid">
+        *Times per day should be between 0 and 4
+      </div>
+    </div>
+
+    <button type="submit" class="submit-button" [disabled]="medication.invalid" (click)="submit()">
+      <span class="submit-button-label">Create medication</span>
+    </button>
+  </form>
+
+</ng-container>

@@ -1,0 +1,94 @@
+.new-medication-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-medication-header {
+  height: 2rem;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  font-size: large;
+  background-color: #e1e1e1;
+}
+
+.new-medication-header-content {
+  color: #708eaf;
+}
+
+.new-medication-form-part {
+  display: flex;
+  flex-direction: row;
+  flex: 2;
+  margin-top: 0.2rem;
+}
+
+.new-medication-form-label {
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+  color: #737373;
+}
+
+.new-medication-form-field {
+  margin-left: 0.5rem;
+  width: 13rem;
+  height: 1.5rem;
+  border-radius: 0.3rem;
+  border: 0.1em solid #9b9b9b;
+  color: #444444;
+}
+
+.new-medication-category {
+  margin-left: 0.5rem;
+  border-radius: 0.3rem;
+  border: 0.1em solid #9b9b9b;
+  width: 13rem;
+  height: 1.5rem;
+  color: #444444;
+}
+
+.submit-button {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #6c6c6c;
+  border-radius: 0.5rem;
+  height: 2rem;
+  width: 9rem;
+  align-items: center;
+  justify-content: center;
+  background-color: #cbf0ff;
+  color: #708eaf;
+  cursor: pointer;
+  margin-left: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.submit-button:hover {
+  background-color: #a0d6f6;
+}
+
+.submit-button:disabled {
+  background-color: #e3f2ff;
+  pointer-events: none;
+}
+
+.submit-button-label {
+  pointer-events: none;
+}
+
+.error{
+  color: #ff6161;
+  margin-left: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.invalid {
+  margin-left: 0.5rem;
+  width: 13rem;
+  height: 1.5rem;
+  border-radius: 0.3rem;
+  border: 0.1em solid #ff6161;
+  color: #444444;
+}

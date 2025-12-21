@@ -1,0 +1,32 @@
+<div class="table-wrapper">
+  <div class="table-content-wrapper">
+    <div class="table-header-start">Name</div>
+    <div class="table-header">Category</div>
+    <div class="table-header">Quantity(mg)</div>
+    <div class="table-header">Times per Day</div>
+    <div class="table-header">User Created</div>
+    <div class="table-header">Date Created</div>
+    <div class="table-header">User Updated</div>
+    <div class="table-header">Date Updated</div>
+    <div class="table-header-end">Actions</div>
+  </div>
+
+  <div *ngFor="let medication of medications" class="table-content-wrapper">
+    <div class="table-cell">{{medication.name}}</div>
+    <div class="table-cell">{{this.categories[medication.category]}}</div>
+    <div class="table-cell">{{medication.quantity}}</div>
+    <div class="table-cell">{{medication.timesPerDay}}</div>
+    <div class="table-cell">{{medication.userCreated}}</div>
+    <div class="table-cell">{{ medication.dateCreated | date:'dd/MM/yyyy hh:mm' }}</div>
+    <div class="table-cell">{{medication.userUpdated}}</div>
+    <div class="table-cell">{{medication.dateUpdated}}</div>
+    <div class="table-cell">
+      <img src="assets/edit-solid.svg" alt="Medication icon" class="icon">
+      <img src="assets/trash-solid-full.svg" alt="Medication icon" class="icon">
+    </div>
+  </div>
+
+  <div class="table-footer-wrapper">
+    <div class="table-footer-info">Showing {{medications.length}} medications</div>
+  </div>
+</div>
