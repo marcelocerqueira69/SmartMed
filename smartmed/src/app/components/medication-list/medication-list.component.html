@@ -1,3 +1,8 @@
+<div class="medication-search-wrapper">
+  <label>Medication search:</label>
+  <input type="text" class="medication-search" [formControl]="searchControl">
+</div>
+
 <div class="table-wrapper">
   <div class="table-content-wrapper">
     <div class="table-header-start">Name</div>
@@ -19,10 +24,10 @@
     <div class="table-cell">{{medication.userCreated}}</div>
     <div class="table-cell">{{ medication.dateCreated | date:'dd/MM/yyyy hh:mm' }}</div>
     <div class="table-cell">{{medication.userUpdated}}</div>
-    <div class="table-cell">{{medication.dateUpdated}}</div>
+    <div class="table-cell">{{medication.dateUpdated| date:'dd/MM/yyyy hh:mm' }}</div>
     <div class="table-cell">
-      <img src="assets/edit-solid.svg" alt="Medication icon" class="icon">
-      <img src="assets/trash-solid-full.svg" alt="Medication icon" class="icon">
+      <img src="assets/edit-solid.svg" alt="Medication icon" class="icon" (click)="edit(medication.id)">
+      <img src="assets/trash-solid-full.svg" alt="Medication icon" class="icon" (click)="delete(medication.id)">
     </div>
   </div>
 

@@ -11,13 +11,16 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatOptionModule} from '@angular/material/core';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
+import { ConfirmationModalComponent } from './modal/confirmation-modal/confirmation-modal.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
     AppComponent,
     MedicationListComponent,
     MedicationListComponent,
-    MedicationCreationComponent
+    MedicationCreationComponent,
+    ConfirmationModalComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +30,7 @@ import {ToastrModule} from "ngx-toastr";
     MatSelectModule,
     MatOptionModule,
     BrowserAnimationsModule,
+    MatDialogModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-top-right',

@@ -6,7 +6,8 @@ import {MedicationCreationComponent} from "./components/medication-creation/medi
 const routes: Routes = [
   { path: '', redirectTo: 'medications', pathMatch: 'full' },
   { path: 'medication/list', component: MedicationListComponent },
-  { path: 'medication/new', component: MedicationCreationComponent }
+  { path: 'medication/new', component: MedicationCreationComponent },
+  { path: 'medication/edit/:id', component: MedicationCreationComponent }
 ];
 
 @NgModule({

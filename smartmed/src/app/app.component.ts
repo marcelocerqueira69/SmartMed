@@ -9,11 +9,11 @@ import {Router} from "@angular/router";
 export class AppComponent {
   title = 'smartmed';
 
-  redirect(page: string) {
-    this.router.navigate(['medication', page])
-  }
-
   constructor(private router: Router) {
 
+  }
+
+  redirect(page: string) {
+    this.router.navigate(['medication', page])
   }
 }

@@ -58,8 +58,12 @@
       </div>
     </div>
 
-    <button type="submit" class="submit-button" [disabled]="medication.invalid" (click)="submit()">
+    <button *ngIf="!receivedMedication" type="submit" class="submit-button" [disabled]="medication.invalid" (click)="add()">
       <span class="submit-button-label">Create medication</span>
+    </button>
+
+    <button *ngIf="receivedMedication" type="submit" class="submit-button" [disabled]="medication.invalid" (click)="edit()">
+      <span class="submit-button-label">Update medication</span>
     </button>
   </form>
 

@@ -1,0 +1,11 @@
+<div class="modal-header">
+  <div>Confirmation</div>
+</div>
+<div class="modal-content">
+  <div class="modal-text">Are you sure you want to {{action}} this medication?</div>
+
+  <div class="modal-button-wrapper">
+    <div class="modal-button" (click)="closeModal(true)">Confirm</div>
+    <div class="modal-button" (click)="closeModal(false)">Cancel</div>
+  </div>
+</div>
