@@ -4,6 +4,9 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {ToastrService} from 'ngx-toastr';
 import {Medication} from "../../model/Medication";
 import {CommonService} from "../../services/common.service";
+import {ConfirmationModalComponent} from "../../modal/confirmation-modal/confirmation-modal.component";
+import {Subscription} from "rxjs";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-medication-creation',
@@ -13,6 +16,7 @@ import {CommonService} from "../../services/common.service";
 export class MedicationCreationComponent {
   receivedMedication: Medication | undefined
   editMode: boolean = false
+  protected subscriptionList: Subscription = new Subscription()
 
   medication = this._formBuilder.group({
     name: ['', Validators.required],
@@ -35,7 +39,7 @@ export class MedicationCreationComponent {
 
 
   constructor(private _formBuilder: FormBuilder, private toastr: ToastrService, private router: Router,
-              private commonService: CommonService, private route: ActivatedRoute) {
+              private commonService: CommonService, private route: ActivatedRoute, protected readonly dialog: MatDialog) {
     let id = this.route.snapshot.paramMap.get('id')
 
     if (id !== null) {
@@ -82,16 +86,19 @@ export class MedicationCreationComponent {
 
   edit() {
     if (this.medication.valid) {
-      let medication = this.createMedication(1)
-      this.commonService.update(medication)
-      this.router.navigate(['medication', 'list'])
-      this.medication.reset({
-        name: '',
-        category: '',
-        quantity: 0,
-        timesPerDay: 0
-      });
-      this.toastr.success('Medication updated with success', 'Success')
+      const dialogRef = this.dialog.open(ConfirmationModalComponent,
+        {disableClose: false, panelClass: 'confirmation-modal', width: '35vw', height: 'auto', data: {action: 'update'}}
+      );
+      this.subscriptionList.add(dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          let medication = this.createMedication(1)
+          this.commonService.update(medication)
+          this.router.navigate(['medication', 'list'])
+          this.toastr.success('Medication updated with success', 'Success')
+        }
+      }));
+
+
     }
   }
 
